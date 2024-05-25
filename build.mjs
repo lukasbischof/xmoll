@@ -3,15 +3,15 @@ import esbuild from "esbuild";
 import postcss from "postcss";
 import postcssPresetEnv from "postcss-preset-env";
 import { sassPlugin } from "esbuild-sass-plugin";
-import copyStaticFiles from "esbuild-copy-static-files";
+import * as fs from "node:fs";
 
 // check if --watch flag is present
-const watch = process.argv.includes("--watch");
 const serve = process.argv.includes("--serve");
+const watch = process.argv.includes("--watch") || serve;
 
 const buildOptions = {
     bundle: true,
-    entryPoints: ["assets/styles/index.scss"],
+    entryPoints: ["src/styles/index.scss", "src/index.ts"],
     loader: { ".jpeg": "file", ".jpg": "file", ".png": "file" },
     minify: true,
     outdir: "build",
@@ -27,15 +27,16 @@ const buildOptions = {
                 ]).process(contents, { from: undefined });
                 return css;
             },
+
         }),
-        copyStaticFiles({
-            src: "./",
-            dest: "build",
-            filter: (file) => {
-                console.log(file)
-                return file.includes("html");
+        {
+            name: "Copy HTML",
+            setup(build) {
+                build.onEnd(() => {
+                    fs.copyFileSync("src/index.html", "build/index.html");
+                });
             },
-        }),
+        },
     ],
 };
 

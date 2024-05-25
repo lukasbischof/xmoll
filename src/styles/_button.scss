@@ -1,3 +1,5 @@
+@import "bootstrap/scss/variables";
+
 $button-gradient: #D8D9DB 0%, #fff 80%, #FDFDFD 100%;
 $button-border: #8F9092;
 $button-text: #606060;
@@ -25,7 +27,6 @@ $button-shadow-active: $button-shadow-base, $shadow-inset-active;
   justify-content: center;
   outline: none;
   cursor: pointer;
-  //width: 150px;
   padding-left: map-get($spacers, 4);
   padding-right: map-get($spacers, 4);
   height: 50px;
