@@ -1,1 +1,3 @@
-new EventSource('/esbuild').addEventListener('change', () => location.reload());
+if (location.host.includes('localhost')) {
+  new EventSource('/esbuild').addEventListener('change', () => location.reload());
+}
