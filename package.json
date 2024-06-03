@@ -6,12 +6,14 @@
     "typescript": "^5.0.0"
   },
   "scripts": {
-    "build": "bun build.mjs"
+    "build": "bun build.mjs",
+    "format": "biome format --write ."
   },
   "dependencies": {
     "bootstrap": "5.3.3"
   },
   "devDependencies": {
+    "@biomejs/biome": "1.7.3",
     "autoprefixer": "^10.4.19",
     "esbuild": "^0.21.3",
     "esbuild-sass-plugin": "^3.3.0",
