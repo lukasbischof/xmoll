@@ -21,7 +21,7 @@ export default class Note {
             throw new Error("Invalid note");
         }
 
-        return new Note(noteIndex + (octave * NOTE_SCALE.length));
+        return new Note(noteIndex + octave * NOTE_SCALE.length);
     }
 
     get octave() {

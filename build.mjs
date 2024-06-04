@@ -21,10 +21,9 @@ const buildOptions = {
         sassPlugin({
             transform: async (contents) => {
                 console.log("Running postcss...");
-                const { css } = await postcss([
-                    postcssPresetEnv({ stage: 0 }),
-                    autoprefixer,
-                ]).process(contents, { from: undefined });
+                const { css } = await postcss([postcssPresetEnv({ stage: 0 }), autoprefixer]).process(contents, {
+                    from: undefined,
+                });
                 return css;
             },
         }),
@@ -33,7 +32,7 @@ const buildOptions = {
             setup(build) {
                 build.onEnd(() => {
                     fs.copyFileSync("src/index.html", "build/index.html");
-                    fs.cpSync("src/audio", "build/audio", { recursive: true })
+                    fs.cpSync("src/audio", "build/audio", { recursive: true });
                 });
             },
         },

@@ -3,7 +3,7 @@
     "formatter": {
         "indentWidth": 4,
         "indentStyle": "space",
-        "lineWidth": 100,
+        "lineWidth": 120,
         "lineEnding": "lf"
     },
     "javascript": {

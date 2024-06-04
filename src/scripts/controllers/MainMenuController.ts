@@ -10,10 +10,9 @@ export class MainMenuController extends Controller {
 
         const form = event.target as HTMLFormElement;
         const intervalsFieldset = form.elements.namedItem("intervals") as HTMLFieldSetElement;
-        const selectedIntervals =
-            (Array.from(intervalsFieldset.elements) as HTMLInputElement[])
-                .filter((element) => element.checked)
-                .map((element) => parseInt(element.value) as Interval);
+        const selectedIntervals = (Array.from(intervalsFieldset.elements) as HTMLInputElement[])
+            .filter((element) => element.checked)
+            .map((element) => parseInt(element.value) as Interval);
 
         Game.startNewGame(selectedIntervals).then(() => {
             const contentCard = document.getElementById("content-card");
