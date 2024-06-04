@@ -29,10 +29,11 @@ const buildOptions = {
             },
         }),
         {
-            name: "Copy HTML",
+            name: "Copy HTML and Audio",
             setup(build) {
                 build.onEnd(() => {
                     fs.copyFileSync("src/index.html", "build/index.html");
+                    fs.cpSync("src/audio", "build/audio", { recursive: true })
                 });
             },
         },

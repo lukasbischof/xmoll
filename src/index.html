@@ -10,10 +10,10 @@
 </head>
 <body>
 <main class="container main-container content-card-container">
-    <div class="card-faces-container rotated" id="content-card">
+    <div class="card-faces-container" id="content-card">
         <div class="panel content-card card-face front-face">
             <div class="main-menu" data-controller="main-menu">
-                <div class="header">
+                <div class="logo-header">
                     <div class="logo">
                         <span class="bigger">X</span>
                         <span>moll</span>
@@ -25,40 +25,40 @@
 
                     <form action="/" data-main-menu-target="form" data-action="main-menu#submit">
                         <div class="well mt-3">
-                            <div class="button-grid">
-                                <input id="prime" type="checkbox" hidden="hidden">
+                            <fieldset name="intervals" class="button-grid">
+                                <input id="prime" type="checkbox" hidden="hidden" value="0">
                                 <label for="prime" class="selectable-button">
                                     Prim
                                 </label>
-                                <input id="second" type="checkbox" hidden="hidden">
+                                <input id="second" type="checkbox" hidden="hidden" value="1">
                                 <label for="second" class="selectable-button">
                                     Sekund
                                 </label>
-                                <input id="third" type="checkbox" hidden="hidden">
+                                <input id="third" type="checkbox" hidden="hidden" value="2">
                                 <label for="third" class="selectable-button">
                                     Terz
                                 </label>
-                                <input id="fourth" type="checkbox" hidden="hidden">
+                                <input id="fourth" type="checkbox" hidden="hidden" value="3">
                                 <label for="fourth" class="selectable-button">
                                     Quarte
                                 </label>
-                                <input id="fifth" type="checkbox" hidden="hidden">
+                                <input id="fifth" type="checkbox" hidden="hidden" value="4">
                                 <label for="fifth" class="selectable-button">
                                     Quinte
                                 </label>
-                                <input id="sixth" type="checkbox" hidden="hidden">
+                                <input id="sixth" type="checkbox" hidden="hidden" value="5">
                                 <label for="sixth" class="selectable-button">
                                     Sexte
                                 </label>
-                                <input id="seventh" type="checkbox" hidden="hidden">
+                                <input id="seventh" type="checkbox" hidden="hidden" value="6">
                                 <label for="seventh" class="selectable-button">
                                     Septime
                                 </label>
-                                <input id="octave" type="checkbox" hidden="hidden">
+                                <input id="octave" type="checkbox" hidden="hidden" value="7">
                                 <label for="octave" class="selectable-button">
                                     Oktave
                                 </label>
-                            </div>
+                            </fieldset>
                         </div>
 
                         <div class="mt-4 mb-2 w-100 d-flex justify-content-center">
@@ -68,7 +68,7 @@
                 </div>
             </div>
         </div>
-        <div class="panel content-card card-face back-face">
+        <div class="panel content-card card-face back-face" data-controller="game">
             <div class="logo-header success">
                 <div class="logo align-items-center">
                     <div class="piano"></div>
@@ -84,10 +84,9 @@
                 <form action="/">
                     <div class="well mt-3">
                         <div class="button-grid">
-                            <input id="g_prime" type="checkbox" hidden="hidden">
-                            <label for="g_prime" class="selectable-button">
+                            <button value="0" class="selectable-button">
                                 Prim
-                            </label>
+                            </button>
                             <input id="g_second" type="checkbox" hidden="hidden">
                             <label for="g_second" class="selectable-button">
                                 Sekund
@@ -118,11 +117,11 @@
                             </label>
                         </div>
                     </div>
-
-                    <div class="mt-4 mb-2 w-100 d-flex justify-content-center">
-                        <button class="btn btn-primary" type="submit">Training beginnen</button>
-                    </div>
                 </form>
+
+                <div class="mt-4 mb-2 w-100 d-flex justify-content-center">
+                    <button class="btn btn-primary" data-action="game#playAgain">Erneut abspielen</button>
+                </div>
             </div>
         </div>
     </div>
