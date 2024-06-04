@@ -1,0 +1,29 @@
+.content-card-container {
+    perspective: 800px;
+    perspective-origin: 50% 50%;
+}
+
+.card-faces-container {
+    transition: transform 1.25s ease-in-out;
+    transform-style: preserve-3d;
+    position: relative;
+    margin: auto 0;
+
+    &.rotated {
+        transform: rotateY(180deg);
+    }
+}
+
+.card-face {
+    backface-visibility: hidden;
+    position: relative;
+    top: 0;
+    left: 0;
+}
+
+.back-face {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: rotateY(180deg);
+}

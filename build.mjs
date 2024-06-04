@@ -12,7 +12,7 @@ const watch = process.argv.includes("--watch") || serve;
 const buildOptions = {
     bundle: true,
     entryPoints: ["src/styles/index.scss", "src/index.ts"],
-    loader: { ".jpeg": "file", ".jpg": "file", ".png": "file" },
+    loader: { ".jpeg": "file", ".jpg": "file", ".png": "file", ".webp": "file" },
     minify: true,
     outdir: "build",
     publicPath: "",

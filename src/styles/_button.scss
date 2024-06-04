@@ -1,23 +1,5 @@
 @import "bootstrap/scss/variables";
-
-$button-gradient: #D8D9DB 0%, #fff 80%, #FDFDFD 100%;
-$button-border: #8F9092;
-$button-text: #606060;
-
-$highlight-bottom: 0 1px 1px 1px #FCFCFC;
-$shadow-bottom: 0 6px 8px #D6D7D9;
-$shadow-top: 0 -2px 2px #CECFD1;
-$highlight-top: 0 -3px 2px #FEFEFE;
-$shadow-inset: inset 0 0 3px 0 #CECFD1;
-$shadow-inset-hover: inset 0 0 3px 3px #CECFD1;
-$shadow-inset-focus: inset 0 0 10px 0px rgba(0, 0, 250, .6);
-$shadow-inset-active: inset 0 0 5px 3px #999, inset 0 0 30px #aaa;
-
-$button-shadow-base: $highlight-bottom, $shadow-bottom, $shadow-top, $highlight-top;
-$button-shadow-default: $button-shadow-base, $shadow-inset;
-$button-shadow-hover: $button-shadow-base, $shadow-inset-hover;
-$button-shadow-focus: $button-shadow-base, $shadow-inset-focus;
-$button-shadow-active: $button-shadow-base, $shadow-inset-active;
+@import "variables";
 
 .btn {
   -webkit-appearance: none;
@@ -82,5 +64,14 @@ $button-shadow-active: $button-shadow-base, $shadow-inset-active;
       width: 30px;
       height: 30px;
     }
+  }
+}
+
+@keyframes active {
+  from {
+    box-shadow: $button-shadow-focus;
+  }
+  to {
+    box-shadow: $button-shadow-hover;
   }
 }

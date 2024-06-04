@@ -1,0 +1,13 @@
+@import "bootstrap/scss/variables";
+@import "variables";
+
+.panel {
+  background-color: $panel-background-color;
+  align-self: center;
+  width: 500px;
+  border: 1px solid #fff;
+  outline: 1px solid #444;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+  overflow: hidden;
+}

@@ -9,60 +9,121 @@
     <title>Xmoll</title>
 </head>
 <body>
-<main class="container main-container">
-    <div class="panel main-menu">
-        <div class="header">
-            <div class="logo">
-                <span class="bigger">X</span>
-                <span>moll</span>
-            </div>
-        </div>
-
-        <div class="interval-selector pt-4">
-            <div class="mb-4 text-center w-100">Bitte wähle Deine Intervalle, die Du trainieren möchtest:</div>
-
-            <form action="/">
-                <div class="well mt-3">
-                    <div class="button-grid">
-                        <input id="prime" type="checkbox" hidden="hidden">
-                        <label for="prime" class="selectable-button">
-                            Prim
-                        </label>
-                        <input id="second" type="checkbox" hidden="hidden">
-                        <label for="second" class="selectable-button">
-                            Sekund
-                        </label>
-                        <input id="third" type="checkbox" hidden="hidden">
-                        <label for="third" class="selectable-button">
-                            Terz
-                        </label>
-                        <input id="fourth" type="checkbox" hidden="hidden">
-                        <label for="fourth" class="selectable-button">
-                            Quarte
-                        </label>
-                        <input id="fifth" type="checkbox" hidden="hidden">
-                        <label for="fifth" class="selectable-button">
-                            Quinte
-                        </label>
-                        <input id="sixth" type="checkbox" hidden="hidden">
-                        <label for="sixth" class="selectable-button">
-                            Sexte
-                        </label>
-                        <input id="seventh" type="checkbox" hidden="hidden">
-                        <label for="seventh" class="selectable-button">
-                            Septime
-                        </label>
-                        <input id="octave" type="checkbox" hidden="hidden">
-                        <label for="octave" class="selectable-button">
-                            Oktave
-                        </label>
+<main class="container main-container content-card-container">
+    <div class="card-faces-container rotated" id="content-card">
+        <div class="panel content-card card-face front-face">
+            <div class="main-menu" data-controller="main-menu">
+                <div class="header">
+                    <div class="logo">
+                        <span class="bigger">X</span>
+                        <span>moll</span>
                     </div>
                 </div>
 
-                <div class="mt-4 mb-2 w-100 d-flex justify-content-center">
-                    <button class="btn btn-primary" type="submit">Training beginnen</button>
+                <div class="interval-selector pt-4">
+                    <div class="mb-4 text-center w-100">Bitte wähle Deine Intervalle, die Du trainieren möchtest:</div>
+
+                    <form action="/" data-main-menu-target="form" data-action="main-menu#submit">
+                        <div class="well mt-3">
+                            <div class="button-grid">
+                                <input id="prime" type="checkbox" hidden="hidden">
+                                <label for="prime" class="selectable-button">
+                                    Prim
+                                </label>
+                                <input id="second" type="checkbox" hidden="hidden">
+                                <label for="second" class="selectable-button">
+                                    Sekund
+                                </label>
+                                <input id="third" type="checkbox" hidden="hidden">
+                                <label for="third" class="selectable-button">
+                                    Terz
+                                </label>
+                                <input id="fourth" type="checkbox" hidden="hidden">
+                                <label for="fourth" class="selectable-button">
+                                    Quarte
+                                </label>
+                                <input id="fifth" type="checkbox" hidden="hidden">
+                                <label for="fifth" class="selectable-button">
+                                    Quinte
+                                </label>
+                                <input id="sixth" type="checkbox" hidden="hidden">
+                                <label for="sixth" class="selectable-button">
+                                    Sexte
+                                </label>
+                                <input id="seventh" type="checkbox" hidden="hidden">
+                                <label for="seventh" class="selectable-button">
+                                    Septime
+                                </label>
+                                <input id="octave" type="checkbox" hidden="hidden">
+                                <label for="octave" class="selectable-button">
+                                    Oktave
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 mb-2 w-100 d-flex justify-content-center">
+                            <button class="btn btn-primary" type="submit">Training beginnen</button>
+                        </div>
+                    </form>
                 </div>
-            </form>
+            </div>
+        </div>
+        <div class="panel content-card card-face back-face">
+            <div class="logo-header success">
+                <div class="logo align-items-center">
+                    <div class="piano"></div>
+                    <div class="d-inline-flex align-items-baseline">
+                        <span class="bigger">X</span>
+                        <span>moll</span>
+                    </div>
+                </div>
+            </div>
+            <div class="interval-selector pt-4">
+                <div class="mb-4 text-center w-100">Welches Intervall wurde gespielt?</div>
+
+                <form action="/">
+                    <div class="well mt-3">
+                        <div class="button-grid">
+                            <input id="g_prime" type="checkbox" hidden="hidden">
+                            <label for="g_prime" class="selectable-button">
+                                Prim
+                            </label>
+                            <input id="g_second" type="checkbox" hidden="hidden">
+                            <label for="g_second" class="selectable-button">
+                                Sekund
+                            </label>
+                            <input id="g_third" type="checkbox" hidden="hidden">
+                            <label for="g_third" class="selectable-button">
+                                Terz
+                            </label>
+                            <input id="g_fourth" type="checkbox" hidden="hidden">
+                            <label for="g_fourth" class="selectable-button">
+                                Quarte
+                            </label>
+                            <input id="g_fifth" type="checkbox" hidden="hidden">
+                            <label for="g_fifth" class="selectable-button">
+                                Quinte
+                            </label>
+                            <input id="g_sixth" type="checkbox" hidden="hidden">
+                            <label for="g_sixth" class="selectable-button">
+                                Sexte
+                            </label>
+                            <input id="g_seventh" type="checkbox" hidden="hidden">
+                            <label for="g_seventh" class="selectable-button">
+                                Septime
+                            </label>
+                            <input id="g_octave" type="checkbox" hidden="hidden">
+                            <label for="g_octave" class="selectable-button">
+                                Oktave
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="mt-4 mb-2 w-100 d-flex justify-content-center">
+                        <button class="btn btn-primary" type="submit">Training beginnen</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </main>

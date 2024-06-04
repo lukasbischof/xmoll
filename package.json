@@ -10,6 +10,7 @@
     "format": "biome format --write ."
   },
   "dependencies": {
+    "@hotwired/stimulus": "^3.2.2",
     "bootstrap": "5.3.3"
   },
   "devDependencies": {
