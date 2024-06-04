@@ -1,7 +1,7 @@
-const NOTE_SCALE = ["A_", "A_#", "H_", "C_", "C_#", "D_", "D_#", "E_", "F_", "F_#", "G_", "G_#"];
+const NOTE_SCALE = ["C_", "C#_", "D_", "D#_", "E_", "F_", "F#_", "G_", "G#_", "A_", "A#_", "H_",];
 
 export type NoteIndex = number;
-export type NoteString = `${"A" | "C" | "D" | "E" | "F" | "G" | "H"}${NoteIndex}${"" | "#"}`;
+export type NoteString = `${"A" | "C" | "D" | "E" | "F" | "G" | "H"}${"" | "#"}${NoteIndex}`;
 
 export default class Note {
     index: number;
@@ -11,7 +11,7 @@ export default class Note {
     }
 
     static fromString(note: NoteString) {
-        if (!/[ACDEFGH]\d#?/.test(note)) {
+        if (!/[ACDEFGH]#?\d/.test(note)) {
             throw new Error("Invalid note format");
         }
 
