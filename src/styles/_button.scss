@@ -2,76 +2,76 @@
 @import "variables";
 
 .btn {
-  -webkit-appearance: none;
-  user-select: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  outline: none;
-  cursor: pointer;
-  padding-left: map-get($spacers, 4);
-  padding-right: map-get($spacers, 4);
-  height: 50px;
-  background-image: linear-gradient(to top, $button-gradient);
-  border-radius: 30px;
-  border: 1px solid $button-border;
-  box-shadow: $button-shadow-default;
-  transition: all .2s ease;
-  font-size: 14px;
-  font-weight: 600;
-  color: $button-text;
-  text-shadow: 0 1px #fff;
-
-  &::-moz-focus-inner {
-    border: 0;
-  }
-
-  & > * {
-    transition: transform .2s ease;
-  }
-
-  &:hover:not([disabled]) {
-    box-shadow: $button-shadow-hover;
-
-    & > * {
-      transform: scale(.975);
-    }
-  }
-
-  &:focus:not(:active) {
-    animation: active .9s alternate infinite;
+    -webkit-appearance: none;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     outline: none;
-  }
+    cursor: pointer;
+    padding-left: map-get($spacers, 4);
+    padding-right: map-get($spacers, 4);
+    height: 50px;
+    background-image: linear-gradient(to top, $button-gradient);
+    border-radius: 30px;
+    border: 1px solid $button-border;
+    box-shadow: $button-shadow-default;
+    transition: all .2s ease;
+    font-size: 14px;
+    font-weight: 600;
+    color: $button-text;
+    text-shadow: 0 1px #fff;
 
-  &:active:not([disabled]) {
-    box-shadow: $button-shadow-active;
+    &::-moz-focus-inner {
+        border: 0;
+    }
 
     & > * {
-      transform: scale(.95);
+        transition: transform .2s ease;
     }
-  }
 
-  &:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-  }
+    &:hover:not([disabled]) {
+        box-shadow: $button-shadow-hover;
 
-  &.icon {
-    width: 50px;
-
-    svg {
-      margin-top: 3px;
-      width: 30px;
-      height: 30px;
+        & > * {
+            transform: scale(.975);
+        }
     }
-  }
+
+    &:focus:not(:active) {
+        animation: active .9s alternate infinite;
+        outline: none;
+    }
+
+    &:active:not([disabled]) {
+        box-shadow: $button-shadow-active;
+
+        & > * {
+            transform: scale(.95);
+        }
+    }
+
+    &:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+
+    &.icon {
+        width: 50px;
+
+        svg {
+            margin-top: 3px;
+            width: 30px;
+            height: 30px;
+        }
+    }
 }
 
 @keyframes active {
-  from {
-    box-shadow: $button-shadow-focus;
-  }
-  to {
-    box-shadow: $button-shadow-hover;
-  }
+    from {
+        box-shadow: $button-shadow-focus;
+    }
+    to {
+        box-shadow: $button-shadow-hover;
+    }
 }

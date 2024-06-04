@@ -1,24 +1,24 @@
 {
-  "name": "xmoll",
-  "module": "index.ts",
-  "type": "module",
-  "peerDependencies": {
-    "typescript": "^5.0.0"
-  },
-  "scripts": {
-    "build": "bun build.mjs",
-    "format": "biome format --write ."
-  },
-  "dependencies": {
-    "@hotwired/stimulus": "^3.2.2",
-    "bootstrap": "5.3.3"
-  },
-  "devDependencies": {
-    "@biomejs/biome": "1.7.3",
-    "autoprefixer": "^10.4.19",
-    "esbuild": "^0.21.3",
-    "esbuild-sass-plugin": "^3.3.0",
-    "postcss": "^8.4.38",
-    "postcss-preset-env": "^9.5.13"
-  }
+    "name": "xmoll",
+    "module": "index.ts",
+    "type": "module",
+    "peerDependencies": {
+        "typescript": "^5.0.0"
+    },
+    "scripts": {
+        "build": "bun build.mjs",
+        "format": "biome format --write ."
+    },
+    "dependencies": {
+        "@hotwired/stimulus": "^3.2.2",
+        "bootstrap": "5.3.3"
+    },
+    "devDependencies": {
+        "@biomejs/biome": "1.7.3",
+        "autoprefixer": "^10.4.19",
+        "esbuild": "^0.21.3",
+        "esbuild-sass-plugin": "^3.3.0",
+        "postcss": "^8.4.38",
+        "postcss-preset-env": "^9.5.13"
+    }
 }

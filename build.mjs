@@ -27,7 +27,6 @@ const buildOptions = {
                 ]).process(contents, { from: undefined });
                 return css;
             },
-
         }),
         {
             name: "Copy HTML",
