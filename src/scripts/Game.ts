@@ -42,15 +42,19 @@ export default class Game {
     }
 
     playCurrentInterval() {
-        this.playNote(this.currentNotes[0]);
-        setTimeout(() => {
-            this.playNote(this.currentNotes[1], () => {
-                if (this.currentNotes[0].index != this.currentNotes[1].index) {
-                    this.playNote(this.currentNotes[0]);
-                    this.playNote(this.currentNotes[1]);
-                }
-            });
-        }, 1000);
+        return new Promise<void>((resolve) => {
+            this.playNote(this.currentNotes[0]);
+            setTimeout(() => {
+                this.playNote(this.currentNotes[1], () => {
+                    if (this.currentNotes[0].index != this.currentNotes[1].index) {
+                        this.playNote(this.currentNotes[0]);
+                        this.playNote(this.currentNotes[1], resolve);
+                    } else {
+                        resolve();
+                    }
+                });
+            }, 1000);
+        });
     }
 
     transitionToNextInterval() {

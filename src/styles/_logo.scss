@@ -16,6 +16,21 @@
     }
 }
 
+@keyframes pending {
+    0% {
+        opacity: 0;
+    }
+    45% {
+        opacity: 1;
+    }
+    55% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
 .logo-header {
     position: relative;
     background-color: $logo-header-background-color;
@@ -40,7 +55,8 @@
     }
 
     &.failure::before,
-    &.success::before {
+    &.success::before,
+    &.pending::before {
         content: "";
         position: absolute;
         top: 0;
@@ -58,6 +74,12 @@
 
     &.failure::before {
         background-image: radial-gradient(circle, #F44336, $logo-header-background-color);
+    }
+
+    &.pending::before {
+        $highlight-color: #2196F3;
+        background-image: radial-gradient(circle, lighten(rgba($highlight-color, 0.7), 20%) 0%, rgba($highlight-color, 0.5) 15%, $logo-header-background-color 100%);
+        animation: pending 3s linear infinite;
     }
 }
 
