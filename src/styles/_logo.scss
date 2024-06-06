@@ -51,7 +51,6 @@
         position: absolute;
         top: 0;
         left: 0;
-        z-index: 3;
     }
 
     &.failure::before,
@@ -63,7 +62,6 @@
         left: 0;
         width: 100%;
         height: 100%;
-        z-index: 1;
         animation: fadeInAndOut 2s ease-in-out;
         opacity: 0;
     }
@@ -89,7 +87,6 @@
     align-items: baseline;
     user-select: none;
     position: relative;
-    z-index: 2;
 
     span {
         font-size: 6em;
