@@ -10,7 +10,7 @@ export const loadGrandPianoSource = async (audioContext: AudioContext): Promise<
             const fileName = `audio/grand-piano/${encodeURIComponent(
                 new Note(LOWEST_GRAND_PIANO_NOTE.index + index).name
             )}.mp3`;
-            const response = await fetch(fileName, { mode: "same-origin", verbose: true });
+            const response = await fetch(fileName, { mode: "same-origin" });
             const arrayBuffer: ArrayBuffer = await response.arrayBuffer();
             return {
                 index: LOWEST_GRAND_PIANO_NOTE.index + index,
