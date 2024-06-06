@@ -7,7 +7,9 @@
     },
     "scripts": {
         "build": "bun build.mjs",
-        "format": "biome format --write ."
+        "format": "biome format --write .",
+        "lint": "biome check src",
+        "lint:fix": "biome lint --apply-unsafe src"
     },
     "dependencies": {
         "@hotwired/stimulus": "^3.2.2",
