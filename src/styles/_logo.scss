@@ -76,7 +76,12 @@
 
     &.pending::before {
         $highlight-color: #2196F3;
-        background-image: radial-gradient(circle, lighten(rgba($highlight-color, 0.7), 20%) 0%, rgba($highlight-color, 0.5) 15%, $logo-header-background-color 100%);
+        background-image: radial-gradient(
+                circle,
+                lighten(rgba($highlight-color, 0.7), 20%) 0%,
+                rgba($highlight-color, 0.5) 15%,
+                $logo-header-background-color 100%
+        );
         animation: pending 3s linear infinite;
     }
 }

@@ -12,6 +12,14 @@
     &.rotated {
         transform: rotateY(180deg);
     }
+
+    &.no-animation {
+        transition: none;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        transition: none;
+    }
 }
 
 .card-face {
