@@ -3,7 +3,10 @@ import Game, { type Interval } from "../Game.ts";
 
 // noinspection JSUnusedGlobalSymbols
 export class MainMenuController extends Controller {
-    static targets = ["form"];
+    static targets = ["form", "submitButton"];
+
+    declare formTarget: HTMLFormElement;
+    declare submitButtonTarget: HTMLButtonElement;
 
     submit(event: SubmitEvent) {
         event.preventDefault();
@@ -28,5 +31,16 @@ export class MainMenuController extends Controller {
             };
             contentCard?.addEventListener("transitionend", listener, false);
         });
+    }
+
+    change() {
+        const intervalsFieldset = this.formTarget.elements.namedItem("intervals") as HTMLFieldSetElement;
+        const intervalCheckboxes = Array.from(intervalsFieldset.elements) as HTMLInputElement[];
+
+        if (intervalCheckboxes.some((e) => e.checked)) {
+            this.submitButtonTarget.removeAttribute("disabled");
+        } else {
+            this.submitButtonTarget.setAttribute("disabled", "");
+        }
     }
 }

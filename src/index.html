@@ -24,7 +24,11 @@
                 <div class="interval-selector pt-4">
                     <div class="mb-4 text-center w-100">Bitte wähle Deine Intervalle, die Du trainieren möchtest:</div>
 
-                    <form action="/" data-main-menu-target="form" data-action="main-menu#submit">
+                    <form
+                        action="/"
+                        data-main-menu-target="form"
+                        data-action="main-menu#submit change->main-menu#change"
+                    >
                         <div class="well mt-3">
                             <fieldset name="intervals" class="button-grid">
                                 <input id="prime" type="checkbox" hidden="hidden" value="0">
@@ -63,7 +67,9 @@
                         </div>
 
                         <div class="mt-4 mb-2 w-100 d-flex justify-content-center">
-                            <button class="btn btn-primary" type="submit">Training beginnen</button>
+                            <button class="btn btn-primary" type="submit" data-main-menu-target="submitButton" disabled>
+                                Training beginnen
+                            </button>
                         </div>
                     </form>
                 </div>
