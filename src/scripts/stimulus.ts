@@ -1,11 +1,11 @@
 import { Application } from "@hotwired/stimulus";
 
-import { MainMenuController } from "./controllers/MainMenuController";
 import { GameController } from "./controllers/GameController.ts";
+import { MainMenuController } from "./controllers/MainMenuController";
 
 window.Stimulus = Application.start();
-Stimulus.register("main-menu", MainMenuController);
-Stimulus.register("game", GameController);
+window.Stimulus.register("main-menu", MainMenuController);
+window.Stimulus.register("game", GameController);
 
 declare global {
     interface Window {

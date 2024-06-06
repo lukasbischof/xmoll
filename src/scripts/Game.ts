@@ -1,6 +1,6 @@
 import { loadGrandPianoSource } from "./GrandPiano.ts";
-import type { Source } from "./Source.ts";
 import Note from "./Note.ts";
+import type { Source } from "./Source.ts";
 
 /// The allowed intervals expressed in semitones distance. One integer value = one semitone = 100 cents.
 export type Interval = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11;
@@ -46,7 +46,7 @@ export default class Game {
             this.playNote(this.currentNotes[0]);
             setTimeout(() => {
                 this.playNote(this.currentNotes[1], () => {
-                    if (this.currentNotes[0].index != this.currentNotes[1].index) {
+                    if (this.currentNotes[0].index !== this.currentNotes[1].index) {
                         this.playNote(this.currentNotes[0]);
                         this.playNote(this.currentNotes[1], resolve);
                     } else {

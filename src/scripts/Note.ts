@@ -15,7 +15,7 @@ export default class Note {
             throw new Error("Invalid note format");
         }
 
-        const octave = parseInt(note.replace(/[ACDEFGH]#?/, ""));
+        const octave = Number.parseInt(note.replace(/[ACDEFGH]#?/, ""));
         const noteIndex = NOTE_SCALE.indexOf(note.replace(octave.toString(), "_"));
         if (noteIndex === -1) {
             throw new Error("Invalid note");
@@ -43,10 +43,10 @@ export default class Note {
     [Symbol.toPrimitive](hint: string) {
         if (hint === "number") {
             return this.index;
-        } else if (hint === "string") {
-            return this.name;
-        } else {
-            return null;
         }
+        if (hint === "string") {
+            return this.name;
+        }
+        return null;
     }
 }
