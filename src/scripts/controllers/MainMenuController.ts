@@ -17,7 +17,9 @@ export class MainMenuController extends Controller {
             .filter((element) => element.checked)
             .map((element) => Number.parseInt(element.value) as Interval);
 
-        Game.startNewGame(selectedIntervals).then(() => {
+        const rounds = Number.parseInt((form.elements.namedItem("rounds") as RadioNodeList).value as string);
+
+        Game.startNewGame(selectedIntervals, rounds || Number.POSITIVE_INFINITY).then(() => {
             const contentCard = document.getElementById("content-card");
             contentCard?.classList.add("rotated");
 

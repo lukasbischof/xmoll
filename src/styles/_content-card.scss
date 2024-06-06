@@ -10,7 +10,7 @@
     margin: auto 0;
 
     &.rotated {
-        transform: rotateY(180deg);
+        transform: rotateY(-180deg);
     }
 
     &.no-animation {

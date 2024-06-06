@@ -9,14 +9,18 @@ export default class Game {
     private source?: Source;
     private audioContext: AudioContext;
     private readonly selectedIntervals: Interval[];
+    public readonly rounds: number;
     public currentNotes: [Note, Note] = [new Note(0), new Note(0)];
 
     static get currentGame() {
         return window.currentGame;
     }
 
-    static async startNewGame(selectedIntervals: Interval[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]) {
-        window.currentGame = new Game(selectedIntervals);
+    static async startNewGame(
+        selectedIntervals: Interval[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+        rounds: number = Number.POSITIVE_INFINITY
+    ) {
+        window.currentGame = new Game(selectedIntervals, rounds);
         await window.currentGame.preloadAudioFiles();
     }
 
@@ -29,9 +33,10 @@ export default class Game {
         window.currentGame = Game.fromJson(JSON.parse(json));
     }
 
-    constructor(selectedIntervals: Interval[]) {
+    constructor(selectedIntervals: Interval[], rounds: number) {
         this.audioContext = new AudioContext();
         this.selectedIntervals = selectedIntervals;
+        this.rounds = rounds;
     }
 
     async preloadAudioFiles() {
@@ -108,11 +113,12 @@ export default class Game {
         return {
             selectedIntervals: this.selectedIntervals,
             currentNotes: this.currentNotes.map((note) => note.index),
+            rounds: Number.isFinite(this.rounds) ? this.rounds : "Infinity",
         };
     }
 
     private static fromJson(json: ReturnType<Game["toJson"]>) {
-        const game = new Game(json.selectedIntervals);
+        const game = new Game(json.selectedIntervals, Number(json.rounds));
         game.currentNotes = [new Note(json.currentNotes[0]), new Note(json.currentNotes[1])];
         return game;
     }
