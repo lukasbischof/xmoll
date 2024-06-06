@@ -1,4 +1,4 @@
-const NOTE_SCALE = ["C_", "C#_", "D_", "D#_", "E_", "F_", "F#_", "G_", "G#_", "A_", "A#_", "H_",];
+const NOTE_SCALE = ["C_", "C#_", "D_", "D#_", "E_", "F_", "F#_", "G_", "G#_", "A_", "A#_", "H_"];
 
 export type NoteIndex = number;
 export type NoteString = `${"A" | "C" | "D" | "E" | "F" | "G" | "H"}${"" | "#"}${NoteIndex}`;
@@ -15,7 +15,7 @@ export default class Note {
             throw new Error("Invalid note format");
         }
 
-        const octave = parseInt(note[1]);
+        const octave = parseInt(note.replace(/[ACDEFGH]#?/, ""));
         const noteIndex = NOTE_SCALE.indexOf(note.replace(octave.toString(), "_"));
         if (noteIndex === -1) {
             throw new Error("Invalid note");
