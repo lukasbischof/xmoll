@@ -1,5 +1,6 @@
 @import "bootstrap/scss/variables";
 @import "variables";
+@import "mixins";
 
 @keyframes fadeInAndOut {
     0% {
@@ -35,23 +36,7 @@
     position: relative;
     background-color: $logo-header-background-color;
 
-    &:after {
-        // Glassy effect
-        content: "";
-        background-image: linear-gradient(
-                to bottom,
-                rgba($white, 0.9) 0%,
-                rgba($white, 0.5) 50%,
-                rgba(white, 0.14) 50.1%,
-                transparent 100%
-        );
-
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-    }
+    @include glassy-effect;
 
     &.failure::before,
     &.success::before,
@@ -67,11 +52,11 @@
     }
 
     &.success::before {
-        background-image: radial-gradient(circle, #4CAF50, $logo-header-background-color);
+        background-image: radial-gradient(circle, $success-color, $logo-header-background-color);
     }
 
     &.failure::before {
-        background-image: radial-gradient(circle, #F44336, $logo-header-background-color);
+        background-image: radial-gradient(circle, $failure-color, $logo-header-background-color);
     }
 
     &.pending::before {

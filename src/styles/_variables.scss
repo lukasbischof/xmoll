@@ -1,9 +1,9 @@
 // Panel
-$panel-background-color: #eee;
-$logo-header-background-color: darken($panel-background-color, 20%);
+$panel-background-color: #dadada;
+$logo-header-background-color: darken($panel-background-color, 12%);
 
 // Interval Selector
-$well-background-color: darken($panel-background-color, 30%);
+$well-background-color: darken($panel-background-color, 22%);
 
 // Buttons
 $button-gradient: #D8D9DB 0%, #fff 80%, #FDFDFD 100%;
@@ -24,3 +24,7 @@ $button-shadow-default: $button-shadow-base, $shadow-inset;
 $button-shadow-hover: $button-shadow-base, $shadow-inset-hover;
 $button-shadow-focus: $button-shadow-base, $shadow-inset-focus;
 $button-shadow-active: $button-shadow-base, $shadow-inset-active;
+
+// Colors
+$success-color: #4CAF50;
+$failure-color: #F44336;

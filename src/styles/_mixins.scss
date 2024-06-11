@@ -1,0 +1,21 @@
+@import "bootstrap/scss/variables";
+@import "variables";
+
+@mixin glassy-effect {
+    &:after {
+        content: "";
+        background-image: linear-gradient(
+                to bottom,
+                rgba($white, 0.9) 0%,
+                rgba($white, 0.5) 50%,
+                rgba(white, 0.14) 50.1%,
+                transparent 100%
+        );
+
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+}

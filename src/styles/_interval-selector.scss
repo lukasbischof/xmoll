@@ -2,7 +2,6 @@
 @import "variables";
 
 .interval-selector {
-    background-color: darken($panel-background-color, 8%);
     padding: map-get($spacers, 3);
 
     .well {

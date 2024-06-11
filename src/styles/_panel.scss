@@ -1,5 +1,15 @@
 @import "bootstrap/scss/variables";
 @import "variables";
+@import "mixins";
+
+@keyframes expand {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 100%;
+    }
+}
 
 .panel {
     background-color: $panel-background-color;
@@ -10,4 +20,34 @@
     border-radius: $border-radius;
     box-shadow: $box-shadow;
     overflow: hidden;
+    text-shadow: 0 1px 0 rgba($white, 0.5);
+
+    .footer .progress-bar {
+        $progress-bar-height: 25px;
+        @include glassy-effect;
+
+        background-color: $logo-header-background-color;
+        position: relative;
+        height: $progress-bar-height;
+        width: 100%;
+        display: grid;
+
+        .tile {
+            animation: .5s expand ease-out;
+            color: white;
+            text-align: center;
+            vertical-align: center;
+            line-height: $progress-bar-height;
+            font-size: $font-size-sm;
+            text-shadow: none;
+
+            &.success {
+                background-color: $success-color;
+            }
+
+            &.failure {
+                background-color: $failure-color;
+            }
+        }
+    }
 }
