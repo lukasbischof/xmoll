@@ -1,0 +1,48 @@
+@import "bootstrap/scss/variables";
+@import "variables";
+
+.switch-button {
+    padding-left: 7.5px;
+    user-select: none;
+    -webkit-touch-callout: none;
+
+    .rail {
+        width: 35px;
+        height: 10px;
+        background-color: $well-background-color;
+        box-shadow: $well-box-shadow;
+        border-radius: 5px;
+        position: relative;
+        transition: .25s background-color;
+    }
+
+    .knob {
+        $knob-size: 25px;
+        background-image: url("../images/knob.png");
+        background-size: contain;
+        width: $knob-size;
+        height: $knob-size;
+        border-radius: 50%;
+        position: absolute;
+        top: -7.5px;
+        left: -7.5px;
+        box-shadow: 0 1px 5px rgba($black, .5);
+        transition: .25s left
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .rail, .knob {
+            transition: none;
+        }
+    }
+}
+
+input[type="checkbox"]:checked + .switch-button {
+    .rail {
+        background-color: $success-color;
+    }
+
+    .knob {
+        left: 15px;
+    }
+}

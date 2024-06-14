@@ -21,8 +21,8 @@
                     </div>
                 </div>
 
-                <div class="interval-selector pt-4">
-                    <div class="mb-4 text-center w-100">Bitte wähle Deine Intervalle, die Du trainieren möchtest:</div>
+                <div class="main-menu-form pt-4">
+                    <div class="mb-3 text-center w-100">Bitte wähle Deine Intervalle, die Du trainieren möchtest:</div>
 
                     <form
                         action="/"
@@ -66,7 +66,7 @@
                             </fieldset>
                         </div>
 
-                        <div class="mb-4 mt-5 text-center w-100">Sowie die Anzahl Runden, die Du spielen möchtest:</div>
+                        <div class="mb-3 mt-5 text-center w-100">Sowie die Anzahl Runden, die Du spielen möchtest:</div>
 
                         <div class="well mt-3">
                             <div class="button-grid small-grid">
@@ -76,8 +76,28 @@
                                 <label for="twenty" class="selectable-button">20</label>
                                 <input id="thirty" name="rounds" type="radio" hidden="hidden" value="30">
                                 <label for="thirty" class="selectable-button">30</label>
-                                <input id="infinity" name="rounds" type="radio" hidden="hidden" value="Infinity" checked>
+                                <input id="infinity" name="rounds" type="radio" hidden="hidden" value="Infinity"
+                                       checked>
                                 <label for="infinity" class="selectable-button">&infin;</label>
+                            </div>
+                        </div>
+
+                        <div class="mt-5">
+                            <div class="d-flex align-items-center" data-controller="switch-button">
+                                <input
+                                    type="checkbox"
+                                    name="exam-mode"
+                                    hidden="hidden"
+                                    id="exam-mode-checkbox"
+                                    data-switch-button-target="checkbox">
+                                <div class="switch-button" data-action="click->switch-button#toggle">
+                                    <div class="rail">
+                                        <div class="knob"></div>
+                                    </div>
+                                </div>
+                                <label for="exam-mode-checkbox" class="switch-button ms-2">Prüfungsmodus</label>
+                                <span class="help-button ms-2"
+                                      title="Im Prüfungsmodus wird die Antwort nicht angezeigt.">?</span>
                             </div>
                         </div>
 
@@ -100,7 +120,7 @@
                     </div>
                 </div>
             </div>
-            <div class="interval-selector pt-4">
+            <div class="main-menu-form pt-4">
                 <div class="mb-4 text-center w-100">Welches Intervall wurde gespielt?</div>
 
                 <form action="/">

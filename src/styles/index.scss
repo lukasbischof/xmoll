@@ -13,13 +13,30 @@
 @import "container";
 @import "panel";
 @import "logo";
-@import "interval-selector";
+@import "main-menu-form";
 @import "button";
 @import "content-card";
+@import "switch-button";
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400&family=Plus+Jakarta+Sans:wght@200..800&display=swap');
 
 body {
     background-image: url("../images/linen.png");
     font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+.help-button {
+    display: inline-block;
+    background-color: $gray-600;
+    color: $gray-200;
+    cursor: help;
+    border-radius: 50px;
+    line-height: 1.4em;
+    width: 1.4em;
+    height: 1.4em;
+    margin-top: .1em;
+    font-size: $sub-sup-font-size;
+    text-align: center;
+    vertical-align: center;
+    text-shadow: none;
 }
