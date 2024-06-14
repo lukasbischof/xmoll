@@ -1,11 +1,11 @@
-import Game from "./scripts/Game.ts";
+import { restoreGame } from "./scripts/utils.ts";
 
 window.addEventListener("DOMContentLoaded", () => {
     if (window.location.hash.startsWith("#game")) {
         console.log("Game page loaded");
 
         try {
-            Game.restoreGame();
+            restoreGame();
             const contentCard = document.getElementById("content-card");
             contentCard?.classList.add("rotated", "no-animation");
 

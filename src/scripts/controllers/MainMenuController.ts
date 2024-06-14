@@ -1,5 +1,5 @@
 import { Controller } from "@hotwired/stimulus";
-import Game, { type Interval } from "../Game.ts";
+import Game, { type SemitoneDistance } from "../Game.ts";
 
 // noinspection JSUnusedGlobalSymbols
 export class MainMenuController extends Controller {
@@ -15,7 +15,7 @@ export class MainMenuController extends Controller {
         const intervalsFieldset = form.elements.namedItem("intervals") as HTMLFieldSetElement;
         const selectedIntervals = (Array.from(intervalsFieldset.elements) as HTMLInputElement[])
             .filter((element) => element.checked)
-            .map((element) => Number.parseInt(element.value) as Interval);
+            .map((element) => Number.parseInt(element.value) as SemitoneDistance);
 
         const rounds = Number.parseInt((form.elements.namedItem("rounds") as RadioNodeList).value as string);
 
