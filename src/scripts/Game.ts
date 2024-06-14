@@ -1,6 +1,7 @@
 import { loadGrandPianoSource } from "./GrandPiano.ts";
 import Note from "./Note.ts";
 import type { Source } from "./Source.ts";
+import { debug } from "./logger.ts";
 
 /// The allowed intervals expressed in semitones distance. One integer value = one semitone = 100 cents.
 export type Interval = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11;
@@ -53,7 +54,7 @@ export default class Game {
         const lowerIndex = notesRange[Math.floor(Math.random() * (notesRange.length - currentInterval))];
         const higherIndex = lowerIndex + currentInterval;
 
-        console.log(`Selected interval: ${new Note(lowerIndex)} - ${new Note(higherIndex)}`);
+        debug(`Selected interval: ${new Note(lowerIndex)} - ${new Note(higherIndex)}`);
 
         this.currentNotes = [new Note(lowerIndex), new Note(higherIndex)];
     }
@@ -63,7 +64,7 @@ export default class Game {
             if (this.audioContext.state !== "running") {
                 this.audioContext = new AudioContext();
                 await this.preloadAudioFiles();
-                console.log("Audio context restarted");
+                debug("Audio context restarted");
             }
         };
 
