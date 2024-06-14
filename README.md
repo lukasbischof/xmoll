@@ -1,15 +1,12 @@
-# xmoll
+# Xmoll
 
-To install dependencies:
+This is the continuation of one of my first programming projects ever:
+A tool to train musical intervals, with way more focus on looks rather than actual functionality. 
+Sadly the original code got nuked from the server with no backups (lesson learnt),
+so I started a fresh makeover in a slightly more professional manner than the original code.
 
-```bash
-bun install
-```
+Still in development. 
 
-To run:
+## Development
 
-```bash
-bun run index.ts
-```
-
-This project was created using `bun init` in bun v1.1.8. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
+Run `bun install` and `bun run serve`
