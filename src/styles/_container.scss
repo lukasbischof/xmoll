@@ -1,6 +1,16 @@
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/mixins";
+@import "variables";
+
 .main-container {
     display: flex;
     height: 100vh;
     flex-direction: row;
     justify-content: center;
+}
+
+@include media-breakpoint-down(sm) {
+    .main-container {
+        padding: 0;
+    }
 }

@@ -1,46 +1,8 @@
 @import "bootstrap/scss/variables";
 @import "variables";
+@import "button-grid";
+@import "well";
 
 .main-menu-form {
     padding: map-get($spacers, 3);
-
-    .well {
-        background-color: $well-background-color;
-        border-radius: $border-radius-sm;
-        box-shadow: $well-box-shadow;
-    }
-
-    .button-grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        grid-gap: 1px;
-        padding: 1px;
-
-        .selectable-button {
-            padding: map-get($spacers, 3);
-            text-align: center;
-            border-radius: $border-radius-sm;
-            box-sizing: border-box;
-            border: 1px solid transparent;
-            transition: .2s ease-in;
-            cursor: pointer;
-
-            &:hover {
-                border: 1px solid darken($well-background-color, 10%);
-            }
-        }
-
-        &.small-grid .selectable-button {
-            padding: map-get($spacers, 2);
-        }
-
-        input[type="checkbox"]:checked + .selectable-button,
-        input[type="radio"]:checked + .selectable-button {
-            background-color: $panel-background-color;
-            border: 1px solid #fff;
-            box-shadow: $box-shadow-sm;
-            color: $blue-600;
-            font-weight: 500;
-        }
-    }
 }

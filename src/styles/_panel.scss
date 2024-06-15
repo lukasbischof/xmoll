@@ -1,4 +1,5 @@
 @import "bootstrap/scss/variables";
+@import "bootstrap/scss/mixins";
 @import "variables";
 @import "mixins";
 
@@ -14,7 +15,7 @@
 .panel {
     background-color: $panel-background-color;
     align-self: center;
-    width: 500px;
+    width: 100%;
     border: 1px solid #fff;
     outline: 1px solid #444;
     border-radius: $border-radius;
@@ -49,5 +50,11 @@
                 background-color: $failure-color;
             }
         }
+    }
+}
+
+@include media-breakpoint-up(md) {
+    .panel {
+        width: 500px;
     }
 }

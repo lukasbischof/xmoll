@@ -1,0 +1,8 @@
+@import "bootstrap/scss/variables";
+@import "variables";
+
+.well {
+    background-color: $well-background-color;
+    border-radius: $border-radius-sm;
+    box-shadow: $well-box-shadow;
+}

@@ -77,9 +77,10 @@
     align-items: baseline;
     user-select: none;
     position: relative;
+    padding: 0 map-get($spacers, 2);
 
     span {
-        font-size: 6em;
+        font-size: 5em;
         font-weight: 500;
         color: #121212;
         background-image: linear-gradient(to top, #040404, #121212);
@@ -89,7 +90,7 @@
     }
 
     .bigger {
-        font-size: 7em;
+        font-size: 6em;
         font-weight: 600;
     }
 }
@@ -97,7 +98,28 @@
 .piano {
     background-image: url("../images/piano.png");
     background-size: contain;
-    width: 130px;
-    height: 130px;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 110px;
+    height: 110px;
     margin-right: map-get($spacers, 4);
+}
+
+@include media-breakpoint-up(md) {
+    .logo {
+        padding: 0;
+
+        span {
+            font-size: 6em;
+        }
+
+        .bigger {
+            font-size: 7em;
+        }
+    }
+
+    .piano {
+        width: 150px;
+        height: 150px;
+    }
 }
