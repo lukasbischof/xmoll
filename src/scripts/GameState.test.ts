@@ -17,7 +17,10 @@ describe("GameState", () => {
             const json = gameState.toJson();
 
             expect(json).toEqual({
-                playedIntervals: [[0, 1], [1, 2]],
+                playedIntervals: [
+                    [0, 1],
+                    [1, 2],
+                ],
                 config: {
                     selectedIntervals: [1, 2],
                     rounds: 10,
@@ -29,7 +32,7 @@ describe("GameState", () => {
         it("should handle infinite rounds", () => {
             const config: Config = {
                 selectedIntervals: [1 as SemitoneDistance, 2 as SemitoneDistance],
-                rounds: Infinity,
+                rounds: Number.POSITIVE_INFINITY,
                 examMode: false,
             };
             const gameState = new GameState(config);
@@ -43,7 +46,10 @@ describe("GameState", () => {
     describe("fromJson", () => {
         it("should correctly deserialize a GameState instance", () => {
             const json = {
-                playedIntervals: [[0, 1], [4, 5]],
+                playedIntervals: [
+                    [0, 1],
+                    [4, 5],
+                ],
                 config: {
                     selectedIntervals: [1, 2] as SemitoneDistance[],
                     rounds: 10,
@@ -76,7 +82,7 @@ describe("GameState", () => {
 
             const gameState = GameState.fromJson(json);
 
-            expect(gameState.config.rounds).toEqual(Infinity);
+            expect(gameState.config.rounds).toEqual(Number.POSITIVE_INFINITY);
         });
     });
 });

@@ -12,7 +12,7 @@
 <body>
 <main class="container main-container content-card-container">
     <div class="card-faces-container" id="content-card">
-        <div class="panel content-card card-face front-face">
+        <div id="main-menu-card-face" class="panel content-card card-face front-face">
             <div class="main-menu" data-controller="main-menu">
                 <div class="logo-header">
                     <div class="logo">
@@ -110,7 +110,7 @@
                 </div>
             </div>
         </div>
-        <div class="panel content-card card-face back-face" data-controller="game">
+        <div id="game-card-face" class="panel content-card card-face back-face" data-controller="game">
             <div class="logo-header" data-game-target="logoHeader">
                 <div class="logo align-items-center">
                     <div class="piano"></div>
@@ -123,41 +123,42 @@
             <div class="main-menu-form pt-4">
                 <div class="mb-4 text-center w-100">Welches Intervall wurde gespielt?</div>
 
-                <form action="/">
+                <form action="/" data-action="change->game#selectedInterval" data-game-target="intervalForm">
                     <div class="well mt-3">
-                        <div class="button-grid">
-                            <button value="0" class="selectable-button">
+                        <fieldset class="button-grid" data-game-target="buttonGridFieldset">
+                            <input id="g_prime" type="radio" name="game-interval" hidden="hidden" value="0">
+                            <label for="g_prime" class="selectable-button">
                                 Prim
-                            </button>
-                            <input id="g_second" type="checkbox" hidden="hidden">
+                            </label>
+                            <input id="g_second" type="radio" name="game-interval" hidden="hidden" value="1">
                             <label for="g_second" class="selectable-button">
                                 Sekund
                             </label>
-                            <input id="g_third" type="checkbox" hidden="hidden">
+                            <input id="g_third" type="radio" name="game-interval" hidden="hidden" value="2">
                             <label for="g_third" class="selectable-button">
                                 Terz
                             </label>
-                            <input id="g_fourth" type="checkbox" hidden="hidden">
+                            <input id="g_fourth" type="radio" name="game-interval" hidden="hidden" value="3">
                             <label for="g_fourth" class="selectable-button">
                                 Quarte
                             </label>
-                            <input id="g_fifth" type="checkbox" hidden="hidden">
+                            <input id="g_fifth" type="radio" name="game-interval" hidden="hidden" value="4">
                             <label for="g_fifth" class="selectable-button">
                                 Quinte
                             </label>
-                            <input id="g_sixth" type="checkbox" hidden="hidden">
+                            <input id="g_sixth" type="radio" name="game-interval" hidden="hidden" value="5">
                             <label for="g_sixth" class="selectable-button">
                                 Sexte
                             </label>
-                            <input id="g_seventh" type="checkbox" hidden="hidden">
+                            <input id="g_seventh" type="radio" name="game-interval" hidden="hidden" value="6">
                             <label for="g_seventh" class="selectable-button">
                                 Septime
                             </label>
-                            <input id="g_octave" type="checkbox" hidden="hidden">
+                            <input id="g_octave" type="radio" name="game-interval" hidden="hidden" value="7">
                             <label for="g_octave" class="selectable-button">
                                 Oktave
                             </label>
-                        </div>
+                        </fieldset>
                     </div>
                 </form>
 
@@ -166,11 +167,7 @@
                 </div>
             </div>
             <div class="footer mt-2">
-                <div class="progress-bar" style="grid-template-columns: repeat(4, 1fr)">
-                    <div class="tile success">&checkmark;</div>
-                    <div class="tile failure">&cross;</div>
-                    <div class="tile failure">&cross;</div>
-                    <div class="tile success">&checkmark;</div>
+                <div class="progress-bar" style="grid-template-columns: repeat(auto-fit, minmax(1px, 1fr));" data-game-target="progressBar">
                 </div>
             </div>
         </div>

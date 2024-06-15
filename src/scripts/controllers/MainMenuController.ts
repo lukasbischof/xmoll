@@ -19,15 +19,16 @@ export class MainMenuController extends Controller {
             .map((element) => Number.parseInt(element.value) as SemitoneDistance);
 
         const rounds = Number.parseInt((form.elements.namedItem("rounds") as RadioNodeList).value as string);
+        const examMode = (form.elements.namedItem("exam-mode") as HTMLInputElement).checked;
 
-        Game.startNewGame(selectedIntervals, rounds || Number.POSITIVE_INFINITY).then(() => {
+        Game.startNewGame(selectedIntervals, rounds || Number.POSITIVE_INFINITY, examMode).then(() => {
             const contentCard = document.getElementById("content-card");
             contentCard?.classList.add("rotated");
 
             const listener = (e: TransitionEvent) => {
                 if (e.target !== contentCard) return;
 
-                window.history.pushState({}, "", `#game?intervals=${selectedIntervals.join(",")}`);
+                window.history.pushState({}, "", "#game");
 
                 setTimeout(() => Game.currentGame?.transitionToNextInterval(), 500);
                 contentCard?.removeEventListener("transitionend", listener, false);

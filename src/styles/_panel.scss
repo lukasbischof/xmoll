@@ -49,6 +49,10 @@
             &.failure {
                 background-color: $failure-color;
             }
+
+            &.unknown {
+                background-color: $gray-200;
+            }
         }
     }
 }

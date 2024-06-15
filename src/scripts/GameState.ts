@@ -13,6 +13,7 @@ export interface Config {
 export default class GameState {
     public readonly config: Config;
     public playedIntervals: Interval[] = [];
+    public answeredIntervals: SemitoneDistance[] = [];
 
     constructor(config: Config) {
         this.config = config;
@@ -20,6 +21,13 @@ export default class GameState {
 
     public pushInterval(interval: Interval) {
         this.playedIntervals.push(interval);
+    }
+
+    public answerInterval(distance: SemitoneDistance) {
+        this.answeredIntervals.push(distance);
+
+        const correctDistance = this.currentInterval[1].index - this.currentInterval[0].index;
+        return distance === correctDistance;
     }
 
     get currentInterval(): Interval {

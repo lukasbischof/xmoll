@@ -37,7 +37,7 @@ export default class Game {
             throw new Error("Audio files not loaded");
         }
 
-        this.state.currentInterval = selectRandomIntervalFromSource(this.source, this.state.config.selectedIntervals);
+        this.state.pushInterval(selectRandomIntervalFromSource(this.source, this.state.config.selectedIntervals));
     }
 
     playCurrentInterval() {
@@ -64,6 +64,12 @@ export default class Game {
                 }, 1000);
             });
         });
+    }
+
+    provideAnswer(distance: SemitoneDistance) {
+        const correct = this.state.answerInterval(distance);
+        this.save();
+        return correct;
     }
 
     transitionToNextInterval() {
