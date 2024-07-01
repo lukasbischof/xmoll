@@ -17,7 +17,7 @@
         "@biomejs/biome": "1.8.2",
         "@types/bun": "^1.1.4",
         "autoprefixer": "^10.4.19",
-        "esbuild": "^0.21.5",
+        "esbuild": "^0.22.0",
         "esbuild-sass-plugin": "^3.3.1",
         "postcss": "^8.4.38",
         "postcss-preset-env": "^9.5.14",
