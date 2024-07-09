@@ -23,7 +23,9 @@ export class GameController extends Controller {
         if (selectedInterval === null) return;
 
         const correct = Game.currentGame.provideAnswer(selectedInterval);
-        debug(`Selected interval: ${selectedInterval}, Correct: ${correct}`);
+        const currentInterval =
+            Game.currentGame.state.playedIntervals[Game.currentGame.state.playedIntervals.length - 1];
+        debug(`Selected interval: ${selectedInterval}, Correct: ${correct}, current interval: ${currentInterval}`);
         if (Game.currentGame.state.config.examMode) {
             this.addProgressBarTile("unknown");
         } else {
@@ -39,7 +41,6 @@ export class GameController extends Controller {
         this.appendAnimationEndedListenerToLogo(() => {
             this.deselectAllIntervals();
             Game.currentGame.transitionToNextInterval();
-            this.playAgain();
         });
     }
 

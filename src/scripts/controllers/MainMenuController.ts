@@ -16,7 +16,8 @@ export class MainMenuController extends Controller {
         const intervalsFieldset = form.elements.namedItem("intervals") as HTMLFieldSetElement;
         const selectedIntervals = (Array.from(intervalsFieldset.elements) as HTMLInputElement[])
             .filter((element) => element.checked)
-            .map((element) => Number.parseInt(element.value) as SemitoneDistance);
+            .flatMap((element) => element.value.split("-").map((n) => Number.parseInt(n)))
+            .filter((value) => !Number.isNaN(value)) as SemitoneDistance[];
 
         const rounds = Number.parseInt((form.elements.namedItem("rounds") as RadioNodeList).value as string);
         const examMode = (form.elements.namedItem("exam-mode") as HTMLInputElement).checked;

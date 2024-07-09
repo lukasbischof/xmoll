@@ -1,0 +1,13 @@
+@use "sass:color";
+@use "sass:list";
+@use "sass:math";
+
+@function generate-color-palette($start-color, $end-color, $steps) {
+    $palette: ();
+
+    @for $i from 0 through $steps {
+        $palette: list.append($palette, color.mix($start-color, $end-color, percentage(math.div($i, $steps))));
+    }
+
+    @return $palette;
+}

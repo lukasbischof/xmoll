@@ -31,35 +31,36 @@
                     >
                         <div class="well mt-3">
                             <fieldset name="intervals" class="button-grid">
+                                <!-- Values in cents -->
                                 <input id="prime" type="checkbox" hidden="hidden" value="0">
                                 <label for="prime" class="selectable-button">
                                     Prim
                                 </label>
-                                <input id="second" type="checkbox" hidden="hidden" value="1">
+                                <input id="second" type="checkbox" hidden="hidden" value="100-200">
                                 <label for="second" class="selectable-button">
                                     Sekund
                                 </label>
-                                <input id="third" type="checkbox" hidden="hidden" value="2">
+                                <input id="third" type="checkbox" hidden="hidden" value="300-400">
                                 <label for="third" class="selectable-button">
                                     Terz
                                 </label>
-                                <input id="fourth" type="checkbox" hidden="hidden" value="3">
+                                <input id="fourth" type="checkbox" hidden="hidden" value="500-600">
                                 <label for="fourth" class="selectable-button">
                                     Quarte
                                 </label>
-                                <input id="fifth" type="checkbox" hidden="hidden" value="4">
+                                <input id="fifth" type="checkbox" hidden="hidden" value="700">
                                 <label for="fifth" class="selectable-button">
                                     Quinte
                                 </label>
-                                <input id="sixth" type="checkbox" hidden="hidden" value="5">
+                                <input id="sixth" type="checkbox" hidden="hidden" value="800-900">
                                 <label for="sixth" class="selectable-button">
                                     Sexte
                                 </label>
-                                <input id="seventh" type="checkbox" hidden="hidden" value="6">
+                                <input id="seventh" type="checkbox" hidden="hidden" value="1000-1100">
                                 <label for="seventh" class="selectable-button">
                                     Septime
                                 </label>
-                                <input id="octave" type="checkbox" hidden="hidden" value="7">
+                                <input id="octave" type="checkbox" hidden="hidden" value="1200">
                                 <label for="octave" class="selectable-button">
                                     Oktave
                                 </label>
@@ -126,36 +127,57 @@
                 <form action="/" data-action="change->game#selectedInterval" data-game-target="intervalForm">
                     <div class="well mt-3">
                         <fieldset class="button-grid" data-game-target="buttonGridFieldset">
+                            <!-- Values in cents -->
                             <input id="g_prime" type="radio" name="game-interval" hidden="hidden" value="0">
-                            <label for="g_prime" class="selectable-button">
+                            <label for="g_prime" class="selectable-button color-1">
                                 Prim
                             </label>
-                            <input id="g_second" type="radio" name="game-interval" hidden="hidden" value="1">
-                            <label for="g_second" class="selectable-button">
-                                Sekund
+                            <input id="g_minor_second" type="radio" name="game-interval" hidden="hidden" value="100">
+                            <label for="g_minor_second" class="selectable-button color-2">
+                                kleine Sekunde
                             </label>
-                            <input id="g_third" type="radio" name="game-interval" hidden="hidden" value="2">
-                            <label for="g_third" class="selectable-button">
-                                Terz
+                            <input id="g_major_second" type="radio" name="game-interval" hidden="hidden" value="200">
+                            <label for="g_major_second" class="selectable-button color-2">
+                                grosse Sekunde
                             </label>
-                            <input id="g_fourth" type="radio" name="game-interval" hidden="hidden" value="3">
-                            <label for="g_fourth" class="selectable-button">
-                                Quarte
+                            <input id="g_minor_third" type="radio" name="game-interval" hidden="hidden" value="300">
+                            <label for="g_minor_third" class="selectable-button color-3">
+                                kleine Terz
                             </label>
-                            <input id="g_fifth" type="radio" name="game-interval" hidden="hidden" value="4">
-                            <label for="g_fifth" class="selectable-button">
-                                Quinte
+                            <input id="g_major_third" type="radio" name="game-interval" hidden="hidden" value="400">
+                            <label for="g_major_third" class="selectable-button color-3">
+                                grosse Terz
                             </label>
-                            <input id="g_sixth" type="radio" name="game-interval" hidden="hidden" value="5">
-                            <label for="g_sixth" class="selectable-button">
-                                Sexte
+                            <input id="g_perfect_fourth" type="radio" name="game-interval" hidden="hidden" value="500">
+                            <label for="g_perfect_fourth" class="selectable-button color-4">
+                                (reine) Quarte
                             </label>
-                            <input id="g_seventh" type="radio" name="game-interval" hidden="hidden" value="6">
-                            <label for="g_seventh" class="selectable-button">
-                                Septime
+                            <input id="g_augmented_fourth" type="radio" name="game-interval" hidden="hidden" value="600">
+                            <label for="g_augmented_fourth" class="selectable-button color-4" title="übermässige Quarte / verminderte Quinte">
+                                Übermässige Quarte
                             </label>
-                            <input id="g_octave" type="radio" name="game-interval" hidden="hidden" value="7">
-                            <label for="g_octave" class="selectable-button">
+                            <input id="g_fifth" type="radio" name="game-interval" hidden="hidden" value="700">
+                            <label for="g_fifth" class="selectable-button color-5">
+                                (reine) Quinte
+                            </label>
+                            <input id="g_minor_sixth" type="radio" name="game-interval" hidden="hidden" value="800">
+                            <label for="g_minor_sixth" class="selectable-button color-6">
+                                kleine Sexte
+                            </label>
+                            <input id="g_major_sixth" type="radio" name="game-interval" hidden="hidden" value="900">
+                            <label for="g_major_sixth" class="selectable-button color-6">
+                                grosse Sexte
+                            </label>
+                            <input id="g_minor_seventh" type="radio" name="game-interval" hidden="hidden" value="1000">
+                            <label for="g_minor_seventh" class="selectable-button color-7">
+                                kleine Septime
+                            </label>
+                            <input id="g_major_seventh" type="radio" name="game-interval" hidden="hidden" value="1100">
+                            <label for="g_major_seventh" class="selectable-button color-7">
+                                grosse Septime
+                            </label>
+                            <input id="g_octave" type="radio" name="game-interval" hidden="hidden" value="1200">
+                            <label for="g_octave" class="selectable-button color-8">
                                 Oktave
                             </label>
                         </fieldset>
@@ -167,7 +189,8 @@
                 </div>
             </div>
             <div class="footer mt-2">
-                <div class="progress-bar" style="grid-template-columns: repeat(auto-fit, minmax(1px, 1fr));" data-game-target="progressBar">
+                <div class="progress-bar" style="grid-template-columns: repeat(auto-fit, minmax(1px, 1fr));"
+                     data-game-target="progressBar">
                 </div>
             </div>
         </div>

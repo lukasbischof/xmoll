@@ -15,7 +15,7 @@ export default class Game {
     }
 
     static async startNewGame(
-        selectedIntervals: SemitoneDistance[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+        selectedIntervals: SemitoneDistance[] = [0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200],
         rounds: number = Number.POSITIVE_INFINITY,
         examMode = false
     ) {
@@ -41,6 +41,7 @@ export default class Game {
     }
 
     playCurrentInterval() {
+        debug("Playing current interval");
         const load = async () => {
             if (this.audioContext.state !== "running") {
                 this.audioContext = new AudioContext();

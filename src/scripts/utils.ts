@@ -15,7 +15,7 @@ export const playSound = (audioBuffer: AudioBuffer, audioContext: AudioContext, 
 
 export const selectRandomIntervalFromSource = (source: Source, selectedIntervals: SemitoneDistance[]): Interval => {
     const notesRange = Object.keys(source).map(Number);
-    const currentInterval = selectedIntervals[Math.floor(Math.random() * selectedIntervals.length)];
+    const currentInterval = selectedIntervals[Math.floor(Math.random() * selectedIntervals.length)] / 100;
     const lowerIndex = notesRange[Math.floor(Math.random() * (notesRange.length - currentInterval))];
     const higherIndex = lowerIndex + currentInterval;
 

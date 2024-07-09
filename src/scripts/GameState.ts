@@ -1,7 +1,7 @@
-/// The allowed intervals expressed in semitones distance. One integer value = one semitone = 100 cents.
 import Note from "./Note.ts";
 
-export type SemitoneDistance = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11;
+// Distance in cents between two notes
+export type SemitoneDistance = 0 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 1000 | 1100 | 1200;
 export type Interval = [Note, Note];
 
 export interface Config {
@@ -26,7 +26,7 @@ export default class GameState {
     public answerInterval(distance: SemitoneDistance) {
         this.answeredIntervals.push(distance);
 
-        const correctDistance = this.currentInterval[1].index - this.currentInterval[0].index;
+        const correctDistance = this.currentInterval[0].distanceTo(this.currentInterval[1]);
         return distance === correctDistance;
     }
 

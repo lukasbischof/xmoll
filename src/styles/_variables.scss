@@ -1,3 +1,5 @@
+@import "functions";
+
 // Panel
 $panel-background-color: #dadada;
 $logo-header-background-color: darken($panel-background-color, 12%);
@@ -29,3 +31,5 @@ $button-shadow-active: $button-shadow-base, $shadow-inset-active;
 // Colors
 $success-color: #4CAF50;
 $failure-color: #F44336;
+
+$interval-button-colors: generate-color-palette(#2e1065, #450a0a, 8);

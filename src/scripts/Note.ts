@@ -1,3 +1,5 @@
+import type { SemitoneDistance } from "./GameState.ts";
+
 const NOTE_SCALE = ["C_", "C#_", "D_", "D#_", "E_", "F_", "F#_", "G_", "G#_", "A_", "A#_", "H_"];
 
 export type NoteIndex = number;
@@ -38,6 +40,10 @@ export default class Note {
 
     toString() {
         return this.name;
+    }
+
+    distanceTo(other: Note): SemitoneDistance {
+        return (Math.abs(other.index - this.index) * 100) as SemitoneDistance;
     }
 
     [Symbol.toPrimitive](hint: string) {

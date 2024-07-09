@@ -9,7 +9,7 @@
     "javascript": {
         "formatter": {
             "semicolons": "always",
-            "trailingComma": "es5"
+            "trailingCommas": "es5"
         }
     },
     "json": {

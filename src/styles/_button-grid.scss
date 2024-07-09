@@ -9,6 +9,7 @@
     padding: 1px;
 
     .selectable-button {
+        align-content: center;
         padding: map-get($spacers, 3);
         text-align: center;
         border-radius: $border-radius-sm;
@@ -19,6 +20,12 @@
 
         &:hover {
             border: 1px solid darken($well-background-color, 10%);
+        }
+
+        @for $i from 1 through length($interval-button-colors) {
+            &.color-#{$i} {
+                color: nth($interval-button-colors, $i);
+            }
         }
     }
 

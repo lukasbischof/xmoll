@@ -55,4 +55,23 @@ describe("Note", () => {
             expect(lowerNote > higherNote).toBe(false);
         });
     });
+
+    describe("distanceTo", () => {
+        it("should return absolute distance when other note is higher", () => {
+            const noteC4 = new Note(48); // C4
+            const noteD4 = new Note(50); // D4
+            expect(noteC4.distanceTo(noteD4)).toEqual(200);
+        });
+
+        it("should return absolute distance when other note is lower", () => {
+            const noteC4 = new Note(48); // C4
+            const noteA3 = new Note(45); // A3
+            expect(noteC4.distanceTo(noteA3)).toEqual(300);
+        });
+
+        it("should return zero when both notes are the same", () => {
+            const noteC4 = new Note(48); // C4
+            expect(noteC4.distanceTo(noteC4)).toEqual(0);
+        });
+    });
 });
