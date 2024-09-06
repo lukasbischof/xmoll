@@ -1,8 +1,4 @@
-import Note from "./Note.ts";
-
-// Distance in cents between two notes
-export type SemitoneDistance = 0 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 1000 | 1100 | 1200;
-export type Interval = [Note, Note];
+import AbsoluteInterval, { type SemitoneDistance } from "./AbsoluteInterval.ts";
 
 export interface Config {
     selectedIntervals: SemitoneDistance[];
@@ -12,25 +8,24 @@ export interface Config {
 
 export default class GameState {
     public readonly config: Config;
-    public playedIntervals: Interval[] = [];
+    public playedIntervals: AbsoluteInterval[] = [];
     public answeredIntervals: SemitoneDistance[] = [];
 
     constructor(config: Config) {
         this.config = config;
     }
 
-    public pushInterval(interval: Interval) {
+    public pushInterval(interval: AbsoluteInterval) {
         this.playedIntervals.push(interval);
     }
 
     public answerInterval(distance: SemitoneDistance) {
         this.answeredIntervals.push(distance);
 
-        const correctDistance = this.currentInterval[0].distanceTo(this.currentInterval[1]);
-        return distance === correctDistance;
+        return distance === this.currentInterval.distance;
     }
 
-    get currentInterval(): Interval {
+    get currentInterval(): AbsoluteInterval {
         if (this.playedIntervals.length === 0) {
             throw new Error("No interval played yet");
         }
@@ -40,7 +35,7 @@ export default class GameState {
 
     public toJson() {
         return {
-            playedIntervals: this.playedIntervals.map((interval) => interval.map((note) => note.index)),
+            playedIntervals: this.playedIntervals.map((interval) => interval.toJson()),
             config: {
                 selectedIntervals: this.config.selectedIntervals,
                 rounds: Number.isFinite(this.config.rounds) ? this.config.rounds : "Infinity",
@@ -58,7 +53,7 @@ export default class GameState {
         });
 
         gameState.playedIntervals = json.playedIntervals.map((interval) => {
-            return interval.map((index) => new Note(index)) as Interval;
+            return AbsoluteInterval.fromJson(interval);
         });
 
         return gameState;

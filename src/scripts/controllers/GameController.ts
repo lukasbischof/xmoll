@@ -1,6 +1,6 @@
 import { Controller } from "@hotwired/stimulus";
+import type { SemitoneDistance } from "../AbsoluteInterval.ts";
 import Game from "../Game.ts";
-import type { SemitoneDistance } from "../GameState.ts";
 import { debug } from "../logger.ts";
 
 // noinspection JSUnusedGlobalSymbols
