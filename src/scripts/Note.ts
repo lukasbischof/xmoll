@@ -1,9 +1,10 @@
-import type { SemitoneDistance } from "./GameState.ts";
-
 const NOTE_SCALE = ["C_", "C#_", "D_", "D#_", "E_", "F_", "F#_", "G_", "G#_", "A_", "A#_", "H_"];
 
 export type NoteIndex = number;
 export type NoteString = `${"A" | "C" | "D" | "E" | "F" | "G" | "H"}${"" | "#"}${NoteIndex}`;
+
+/// Distance in cents between two notes. 100 cents = 1 semitone
+export type Cents = number;
 
 export default class Note {
     index: number;
@@ -42,8 +43,8 @@ export default class Note {
         return this.name;
     }
 
-    distanceTo(other: Note): SemitoneDistance {
-        return (Math.abs(other.index - this.index) * 100) as SemitoneDistance;
+    distanceTo(other: Note): Cents {
+        return Math.abs(other.index - this.index) * 100;
     }
 
     [Symbol.toPrimitive](hint: string) {

@@ -1,4 +1,5 @@
-import GameState, { type SemitoneDistance } from "./GameState.ts";
+import type { SemitoneDistance } from "./AbsoluteInterval.ts";
+import GameState from "./GameState.ts";
 import { loadGrandPianoSource } from "./GrandPiano.ts";
 import type Note from "./Note.ts";
 import type { Source } from "./Source.ts";
@@ -52,12 +53,12 @@ export default class Game {
 
         return new Promise<void>((resolve) => {
             load().then(() => {
-                this.playNote(this.state.currentInterval[0]);
+                this.playNote(this.state.currentInterval.lower);
                 setTimeout(() => {
-                    this.playNote(this.state.currentInterval[1], () => {
-                        if (this.state.currentInterval[0].index !== this.state.currentInterval[1].index) {
-                            this.playNote(this.state.currentInterval[0]);
-                            this.playNote(this.state.currentInterval[1], resolve);
+                    this.playNote(this.state.currentInterval.upper, () => {
+                        if (this.state.currentInterval.lower.index !== this.state.currentInterval.upper.index) {
+                            this.playNote(this.state.currentInterval.lower);
+                            this.playNote(this.state.currentInterval.upper, resolve);
                         } else {
                             resolve();
                         }

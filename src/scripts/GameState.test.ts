@@ -1,18 +1,19 @@
 import { describe, expect, it } from "bun:test";
-import GameState, { type Config, type SemitoneDistance } from "./GameState.ts";
+import AbsoluteInterval, { type SemitoneDistance } from "./AbsoluteInterval.ts";
+import GameState, { type Config } from "./GameState.ts";
 import Note from "./Note.ts";
 
 describe("GameState", () => {
     describe("toJson", () => {
         it("should correctly serialize a GameState instance", () => {
             const config: Config = {
-                selectedIntervals: [1 as SemitoneDistance, 2 as SemitoneDistance],
+                selectedIntervals: [100 as SemitoneDistance, 200 as SemitoneDistance],
                 rounds: 10,
                 examMode: false,
             };
             const gameState = new GameState(config);
-            gameState.pushInterval([new Note(0), new Note(1)]);
-            gameState.pushInterval([new Note(1), new Note(2)]);
+            gameState.pushInterval(new AbsoluteInterval(new Note(0), new Note(1)));
+            gameState.pushInterval(new AbsoluteInterval(new Note(1), new Note(2)));
 
             const json = gameState.toJson();
 
@@ -22,7 +23,7 @@ describe("GameState", () => {
                     [1, 2],
                 ],
                 config: {
-                    selectedIntervals: [1, 2],
+                    selectedIntervals: [100, 200],
                     rounds: 10,
                     examMode: false,
                 },
@@ -31,7 +32,7 @@ describe("GameState", () => {
 
         it("should handle infinite rounds", () => {
             const config: Config = {
-                selectedIntervals: [1 as SemitoneDistance, 2 as SemitoneDistance],
+                selectedIntervals: [100 as SemitoneDistance, 200 as SemitoneDistance],
                 rounds: Number.POSITIVE_INFINITY,
                 examMode: false,
             };
@@ -51,7 +52,7 @@ describe("GameState", () => {
                     [4, 5],
                 ],
                 config: {
-                    selectedIntervals: [1, 2] as SemitoneDistance[],
+                    selectedIntervals: [100, 200] as SemitoneDistance[],
                     rounds: 10,
                     examMode: false,
                 },
@@ -60,11 +61,11 @@ describe("GameState", () => {
             const gameState = GameState.fromJson(json);
 
             expect(gameState.playedIntervals).toEqual([
-                [new Note(0), new Note(1)],
-                [new Note(4), new Note(5)],
+                new AbsoluteInterval(new Note(0), new Note(1)),
+                new AbsoluteInterval(new Note(4), new Note(5)),
             ]);
             expect(gameState.config).toEqual({
-                selectedIntervals: [1, 2],
+                selectedIntervals: [100, 200],
                 rounds: 10,
                 examMode: false,
             });
@@ -74,7 +75,7 @@ describe("GameState", () => {
             const json = {
                 playedIntervals: [],
                 config: {
-                    selectedIntervals: [1, 2] as SemitoneDistance[],
+                    selectedIntervals: [100, 200] as SemitoneDistance[],
                     rounds: "Infinity",
                     examMode: false,
                 },
