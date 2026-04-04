@@ -1,4 +1,3 @@
-import "./scripts/stimulus";
 import "./scripts/components/App";
 
 if (location.host.includes("localhost")) {
