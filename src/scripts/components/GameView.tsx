@@ -78,7 +78,7 @@ export default function GameView() {
         <div id="game-card-face" class="panel content-card card-face back-face">
             <div class="logo-header" ref={logoRef}>
                 <div class="logo align-items-center">
-                    <div class="piano"></div>
+                    <div class="piano" />
                     <div class="d-inline-flex align-items-baseline">
                         <span class="bigger">X</span>
                         <span>moll</span>
@@ -161,7 +161,7 @@ export default function GameView() {
             <div class="footer mt-2">
                 <div class="progress-bar" style={{ gridTemplateColumns: gridColumns }}>
                     {progressTiles.map((state, i) => (
-                        <div key={i} class={`tile ${state}`}></div>
+                        <div key={i} class={`tile ${state}`} />
                     ))}
                 </div>
             </div>

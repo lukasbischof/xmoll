@@ -107,7 +107,14 @@ export default function MainMenu({ onFlipToGame }: Props) {
                                 <label for="thirty" class="selectable-button">
                                     30
                                 </label>
-                                <input id="infinity" name="rounds" type="radio" hidden value="Infinity" defaultChecked />
+                                <input
+                                    id="infinity"
+                                    name="rounds"
+                                    type="radio"
+                                    hidden
+                                    value="Infinity"
+                                    defaultChecked
+                                />
                                 <label for="infinity" class="selectable-button">
                                     &infin;
                                 </label>
@@ -126,13 +133,16 @@ export default function MainMenu({ onFlipToGame }: Props) {
                                 />
                                 <div class="switch-button" onClick={() => setExamMode((prev) => !prev)}>
                                     <div class="rail">
-                                        <div class="knob"></div>
+                                        <div class="knob" />
                                     </div>
                                 </div>
                                 <label for="exam-mode-checkbox" class="switch-button ms-2">
                                     Prüfungsmodus
                                 </label>
-                                <span class="help-button ms-2" title="Im Prüfungsmodus wird die Antwort nicht angezeigt.">
+                                <span
+                                    class="help-button ms-2"
+                                    title="Im Prüfungsmodus wird die Antwort nicht angezeigt."
+                                >
                                     ?
                                 </span>
                             </div>
