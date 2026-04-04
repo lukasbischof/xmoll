@@ -12,7 +12,8 @@ const watch = process.argv.includes("--watch") || serve;
 const buildOptions = {
     bundle: true,
     entryPoints: ["src/styles/index.scss", "src/index.ts", "src/router.ts"],
-    loader: { ".jpeg": "file", ".jpg": "file", ".png": "file", ".webp": "file" },
+    loader: { ".jpeg": "file", ".jpg": "file", ".png": "file", ".webp": "file", ".tsx": "tsx", ".jsx": "jsx" },
+    jsxImportSource: "preact",
     minify: true,
     outdir: "build",
     publicPath: "",
