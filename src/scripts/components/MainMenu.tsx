@@ -1,11 +1,47 @@
+import { useRef, useState } from "preact/hooks";
+import type { SemitoneDistance } from "../AbsoluteInterval";
+import Game from "../Game";
+
 interface Props {
     onFlipToGame: () => void;
 }
 
-export default function MainMenu({ onFlipToGame: _onFlipToGame }: Props) {
+export default function MainMenu({ onFlipToGame }: Props) {
+    const [submitEnabled, setSubmitEnabled] = useState(false);
+    const [examMode, setExamMode] = useState(false);
+    const formRef = useRef<HTMLFormElement>(null);
+
+    const handleChange = () => {
+        const form = formRef.current;
+        if (!form) return;
+
+        const intervalsFieldset = form.elements.namedItem("intervals") as HTMLFieldSetElement;
+        const checkboxes = Array.from(intervalsFieldset.elements) as HTMLInputElement[];
+        setSubmitEnabled(checkboxes.some((cb) => cb.checked));
+    };
+
+    const handleSubmit = async (e: Event) => {
+        e.preventDefault();
+
+        const form = formRef.current;
+        if (!form) return;
+
+        const intervalsFieldset = form.elements.namedItem("intervals") as HTMLFieldSetElement;
+        const selectedIntervals = (Array.from(intervalsFieldset.elements) as HTMLInputElement[])
+            .filter((el) => el.checked)
+            .flatMap((el) => el.value.split("-").map((n) => Number.parseInt(n)))
+            .filter((v) => !Number.isNaN(v)) as SemitoneDistance[];
+
+        const rounds = Number.parseInt((form.elements.namedItem("rounds") as RadioNodeList).value);
+        const examModeChecked = (form.elements.namedItem("exam-mode") as HTMLInputElement).checked;
+
+        await Game.startNewGame(selectedIntervals, rounds || Number.POSITIVE_INFINITY, examModeChecked);
+        onFlipToGame();
+    };
+
     return (
         <div id="main-menu-card-face" class="panel content-card card-face front-face">
-            <div class="main-menu" data-controller="main-menu">
+            <div class="main-menu">
                 <div class="logo-header">
                     <div class="logo">
                         <span class="bigger">X</span>
@@ -16,11 +52,7 @@ export default function MainMenu({ onFlipToGame: _onFlipToGame }: Props) {
                 <div class="main-menu-form pt-4">
                     <div class="mb-3 text-center w-100">Bitte wähle Deine Intervalle, die Du trainieren möchtest:</div>
 
-                    <form
-                        action="/"
-                        data-main-menu-target="form"
-                        data-action="main-menu#submit change->main-menu#change"
-                    >
+                    <form action="/" ref={formRef} onSubmit={handleSubmit} onChange={handleChange}>
                         <div class="well mt-3">
                             <fieldset name="intervals" class="button-grid">
                                 {/* Values in cents */}
@@ -83,15 +115,16 @@ export default function MainMenu({ onFlipToGame: _onFlipToGame }: Props) {
                         </div>
 
                         <div class="mt-4">
-                            <div class="d-flex align-items-center" data-controller="switch-button">
+                            <div class="d-flex align-items-center">
                                 <input
                                     type="checkbox"
                                     name="exam-mode"
                                     hidden
                                     id="exam-mode-checkbox"
-                                    data-switch-button-target="checkbox"
+                                    checked={examMode}
+                                    onChange={(e) => setExamMode((e.target as HTMLInputElement).checked)}
                                 />
-                                <div class="switch-button" data-action="click->switch-button#toggle">
+                                <div class="switch-button" onClick={() => setExamMode((prev) => !prev)}>
                                     <div class="rail">
                                         <div class="knob"></div>
                                     </div>
@@ -106,12 +139,7 @@ export default function MainMenu({ onFlipToGame: _onFlipToGame }: Props) {
                         </div>
 
                         <div class="mt-4 mb-2 w-100 d-flex justify-content-center">
-                            <button
-                                class="btn btn-primary"
-                                type="submit"
-                                data-main-menu-target="submitButton"
-                                disabled
-                            >
+                            <button class="btn btn-primary" type="submit" disabled={!submitEnabled}>
                                 Training beginnen
                             </button>
                         </div>
