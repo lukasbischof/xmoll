@@ -1,4 +1,8 @@
-export default function MainMenu() {
+interface Props {
+    onFlipToGame: () => void;
+}
+
+export default function MainMenu({ onFlipToGame: _onFlipToGame }: Props) {
     return (
         <div id="main-menu-card-face" class="panel content-card card-face front-face">
             <div class="main-menu" data-controller="main-menu">
