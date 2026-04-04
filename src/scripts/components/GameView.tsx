@@ -1,34 +1,13 @@
-import { useEffect, useRef, useState } from "preact/hooks";
+import { useRef, useState } from "preact/hooks";
 import type { SemitoneDistance } from "../AbsoluteInterval";
 import Game from "../Game";
 import { debug } from "../logger";
-
-type TileState = "success" | "failure" | "unknown";
-
-function restoreProgressTiles(): TileState[] {
-    const game = Game.currentGame;
-    if (!game) return [];
-
-    const { playedIntervals, answeredIntervals, config } = game.state;
-    const tiles: TileState[] = [];
-    for (let i = 0; i < answeredIntervals.length; i++) {
-        if (config.examMode) {
-            tiles.push("unknown");
-        } else {
-            tiles.push(answeredIntervals[i] === playedIntervals[i].distance ? "success" : "failure");
-        }
-    }
-    return tiles;
-}
+import ProgressBar from "./ProgressBar";
 
 export default function GameView() {
-    const [progressTiles, setProgressTiles] = useState<TileState[]>([]);
+    const [answerCount, setAnswerCount] = useState(Game.currentGame?.state.answeredIntervals.length ?? 0);
     const logoRef = useRef<HTMLDivElement>(null);
     const fieldsetRef = useRef<HTMLFieldSetElement>(null);
-
-    useEffect(() => {
-        setProgressTiles(restoreProgressTiles());
-    }, []);
 
     const applyLogoStatus = (status: "success" | "failure" | "pending" | null) => {
         const logo = logoRef.current;
@@ -63,17 +42,16 @@ export default function GameView() {
 
         const examMode = Game.currentGame.state.config.examMode;
         if (examMode) {
-            setProgressTiles((prev) => [...prev, "unknown"]);
+            setAnswerCount((c) => c + 1);
             clearSelection();
             Game.currentGame.transitionToNextInterval();
         } else {
             if (correct) {
                 applyLogoStatus("success");
-                setProgressTiles((prev) => [...prev, "success"]);
             } else {
                 applyLogoStatus("failure");
-                setProgressTiles((prev) => [...prev, "failure"]);
             }
+            setAnswerCount((c) => c + 1);
 
             const logo = logoRef.current;
             if (!logo) return;
@@ -87,12 +65,6 @@ export default function GameView() {
             logo.addEventListener("animationend", listener);
         }
     };
-
-    const rounds = Game.currentGame?.state.config.rounds;
-    const gridColumns =
-        progressTiles.length > 0 && Number.isFinite(rounds)
-            ? `repeat(${rounds}, 1fr)`
-            : "repeat(auto-fit, minmax(1px, 1fr))";
 
     return (
         <div id="game-card-face" class="panel content-card card-face back-face">
@@ -173,17 +145,13 @@ export default function GameView() {
                 </form>
 
                 <div class="mt-4 w-100 d-flex justify-content-center">
-                    <button class="btn btn-primary" onClick={handlePlayAgain}>
+                    <button class="btn btn-primary" type="button" onClick={handlePlayAgain}>
                         Erneut abspielen
                     </button>
                 </div>
             </div>
             <div class="footer mt-2">
-                <div class="progress-bar" style={{ gridTemplateColumns: gridColumns }}>
-                    {progressTiles.map((state, i) => (
-                        <div key={i} class={`tile ${state}`} />
-                    ))}
-                </div>
+                <ProgressBar answerCount={answerCount} />
             </div>
         </div>
     );

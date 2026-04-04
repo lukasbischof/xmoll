@@ -1,9 +1,9 @@
 import { render } from "preact";
 import { useEffect, useRef, useState } from "preact/hooks";
 import Game from "../Game";
+import { debug } from "../logger";
 import GameView from "./GameView";
 import MainMenu from "./MainMenu";
-import { debug } from "../logger";
 
 /** Delay in ms to trigger a reflow so the no-animation class takes effect before removal. */
 const REFLOW_DELAY_MS = 10;
@@ -27,6 +27,7 @@ export function App() {
     const [noAnimation, setNoAnimation] = useState(restoredFromHash);
     const cardRef = useRef<HTMLDivElement>(null);
 
+    // biome-ignore lint/correctness/useExhaustiveDependencies: only run on mount to remove no-animation after initial render
     useEffect(() => {
         if (noAnimation) {
             setTimeout(() => setNoAnimation(false), REFLOW_DELAY_MS);
@@ -52,10 +53,10 @@ export function App() {
     return (
         <main class="container main-container content-card-container">
             <div
-                    ref={cardRef}
-                    class={`card-faces-container${isFlipped ? " rotated" : ""}${noAnimation ? " no-animation" : ""}`}
-                    id="content-card"
-                >
+                ref={cardRef}
+                class={`card-faces-container${isFlipped ? " rotated" : ""}${noAnimation ? " no-animation" : ""}`}
+                id="content-card"
+            >
                 <MainMenu onFlipToGame={handleFlipToGame} />
                 <GameView />
             </div>

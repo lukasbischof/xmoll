@@ -131,11 +131,22 @@ export default function MainMenu({ onFlipToGame }: Props) {
                                     checked={examMode}
                                     onChange={(e) => setExamMode((e.target as HTMLInputElement).checked)}
                                 />
-                                <div class="switch-button" onClick={() => setExamMode((prev) => !prev)}>
+                                <button
+                                    type="button"
+                                    class="switch-button"
+                                    tabIndex={0}
+                                    onClick={() => setExamMode((prev) => !prev)}
+                                    onKeyDown={(e) => {
+                                        if (e.key === "Enter" || e.key === " ") {
+                                            e.preventDefault();
+                                            setExamMode((prev) => !prev);
+                                        }
+                                    }}
+                                >
                                     <div class="rail">
                                         <div class="knob" />
                                     </div>
-                                </div>
+                                </button>
                                 <label for="exam-mode-checkbox" class="switch-button ms-2">
                                     Prüfungsmodus
                                 </label>
