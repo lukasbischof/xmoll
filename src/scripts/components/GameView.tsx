@@ -1,14 +1,34 @@
-import { useRef, useState } from "preact/hooks";
+import { useEffect, useRef, useState } from "preact/hooks";
 import type { SemitoneDistance } from "../AbsoluteInterval";
 import Game from "../Game";
 import { debug } from "../logger";
 
 type TileState = "success" | "failure" | "unknown";
 
+function restoreProgressTiles(): TileState[] {
+    const game = Game.currentGame;
+    if (!game) return [];
+
+    const { playedIntervals, answeredIntervals, config } = game.state;
+    const tiles: TileState[] = [];
+    for (let i = 0; i < answeredIntervals.length; i++) {
+        if (config.examMode) {
+            tiles.push("unknown");
+        } else {
+            tiles.push(answeredIntervals[i] === playedIntervals[i].distance ? "success" : "failure");
+        }
+    }
+    return tiles;
+}
+
 export default function GameView() {
     const [progressTiles, setProgressTiles] = useState<TileState[]>([]);
     const logoRef = useRef<HTMLDivElement>(null);
     const fieldsetRef = useRef<HTMLFieldSetElement>(null);
+
+    useEffect(() => {
+        setProgressTiles(restoreProgressTiles());
+    }, []);
 
     const applyLogoStatus = (status: "success" | "failure" | "pending" | null) => {
         const logo = logoRef.current;

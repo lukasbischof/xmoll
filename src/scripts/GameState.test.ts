@@ -22,6 +22,7 @@ describe("GameState", () => {
                     [0, 1],
                     [1, 2],
                 ],
+                answeredIntervals: [],
                 config: {
                     selectedIntervals: [100, 200],
                     rounds: 10,
@@ -51,6 +52,7 @@ describe("GameState", () => {
                     [0, 1],
                     [4, 5],
                 ],
+                answeredIntervals: [100, 200] as SemitoneDistance[],
                 config: {
                     selectedIntervals: [100, 200] as SemitoneDistance[],
                     rounds: 10,
@@ -64,6 +66,7 @@ describe("GameState", () => {
                 new AbsoluteInterval(new Note(0), new Note(1)),
                 new AbsoluteInterval(new Note(4), new Note(5)),
             ]);
+            expect(gameState.answeredIntervals).toEqual([100, 200]);
             expect(gameState.config).toEqual({
                 selectedIntervals: [100, 200],
                 rounds: 10,
@@ -74,6 +77,7 @@ describe("GameState", () => {
         it("should handle infinite rounds", () => {
             const json = {
                 playedIntervals: [],
+                answeredIntervals: [] as SemitoneDistance[],
                 config: {
                     selectedIntervals: [100, 200] as SemitoneDistance[],
                     rounds: "Infinity",
