@@ -32,19 +32,21 @@ export default function GameView() {
         const target = e.target as HTMLInputElement;
         if (!target.checked) return;
 
+        const game = Game.currentGame;
+        if (!game) return;
+
         applyLogoStatus(null);
 
         const selectedInterval = Number.parseInt(target.value) as SemitoneDistance;
-        const correct = Game.currentGame.provideAnswer(selectedInterval);
-        const currentInterval =
-            Game.currentGame.state.playedIntervals[Game.currentGame.state.playedIntervals.length - 1];
+        const correct = game.provideAnswer(selectedInterval);
+        const currentInterval = game.state.playedIntervals[game.state.playedIntervals.length - 1];
         debug(`Selected interval: ${selectedInterval}, Correct: ${correct}, current interval: ${currentInterval}`);
 
-        const examMode = Game.currentGame.state.config.examMode;
+        const examMode = game.state.config.examMode;
         if (examMode) {
             setAnswerCount((c) => c + 1);
             clearSelection();
-            Game.currentGame.transitionToNextInterval();
+            game.transitionToNextInterval();
         } else {
             if (correct) {
                 applyLogoStatus("success");
@@ -60,7 +62,7 @@ export default function GameView() {
                 applyLogoStatus(null);
                 logo.removeEventListener("animationend", listener);
                 clearSelection();
-                Game.currentGame.transitionToNextInterval();
+                game.transitionToNextInterval();
             };
             logo.addEventListener("animationend", listener);
         }

@@ -64,4 +64,6 @@ export function App() {
     );
 }
 
-render(<App />, document.body);
+const appRoot = document.getElementById("app");
+if (!appRoot) throw new Error("Missing #app root element");
+render(<App />, appRoot);

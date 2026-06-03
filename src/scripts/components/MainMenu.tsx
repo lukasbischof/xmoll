@@ -131,9 +131,11 @@ export default function MainMenu({ onFlipToGame }: Props) {
                                     checked={examMode}
                                     onChange={(e) => setExamMode((e.target as HTMLInputElement).checked)}
                                 />
-                                <button
-                                    type="button"
+                                <div
                                     class="switch-button"
+                                    role="switch"
+                                    aria-checked={examMode}
+                                    aria-label="Prüfungsmodus"
                                     tabIndex={0}
                                     onClick={() => setExamMode((prev) => !prev)}
                                     onKeyDown={(e) => {
@@ -146,7 +148,7 @@ export default function MainMenu({ onFlipToGame }: Props) {
                                     <div class="rail">
                                         <div class="knob" />
                                     </div>
-                                </button>
+                                </div>
                                 <label for="exam-mode-checkbox" class="switch-button ms-2">
                                     Prüfungsmodus
                                 </label>
