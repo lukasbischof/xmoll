@@ -36,6 +36,7 @@ export default class GameState {
     public toJson() {
         return {
             playedIntervals: this.playedIntervals.map((interval) => interval.toJson()),
+            answeredIntervals: this.answeredIntervals,
             config: {
                 selectedIntervals: this.config.selectedIntervals,
                 rounds: Number.isFinite(this.config.rounds) ? this.config.rounds : "Infinity",
@@ -55,6 +56,8 @@ export default class GameState {
         gameState.playedIntervals = json.playedIntervals.map((interval) => {
             return AbsoluteInterval.fromJson(interval);
         });
+
+        gameState.answeredIntervals = json.answeredIntervals ?? [];
 
         return gameState;
     }
